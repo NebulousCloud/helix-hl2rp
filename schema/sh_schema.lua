@@ -90,7 +90,7 @@ do
 	end
 
 	function CLASS:CanHear(speaker, listener)
-		if (ix.chat.classes.radio:OnCanHear(speaker, listener)) then
+		if (ix.chat.classes.radio:CanHear(speaker, listener)) then
 			return false
 		end
 
@@ -129,7 +129,7 @@ do
 	CLASS.format = "%s requests \"%s\""
 
 	function CLASS:CanHear(speaker, listener)
-		if (ix.chat.classes.request:OnCanHear(speaker, listener)) then
+		if (ix.chat.classes.request:CanHear(speaker, listener)) then
 			return false
 		end
 
