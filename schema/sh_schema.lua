@@ -57,7 +57,7 @@ do
 	CLASS.color = Color(75, 150, 50)
 	CLASS.format = "%s radios in \"%s\""
 
-	function CLASS:OnCanHear(speaker, listener)
+	function CLASS:CanHear(speaker, listener)
 		local character = listener:GetCharacter()
 		local inventory = character:GetInventory()
 
@@ -81,7 +81,7 @@ do
 	CLASS.color = Color(255, 255, 175)
 	CLASS.format = "%s radios in \"%s\""
 
-	function CLASS:OnGetColor(speaker, text)
+	function CLASS:GetColor(speaker, text)
 		if (LocalPlayer():GetEyeTrace().Entity == speaker) then
 			return Color(175, 255, 175)
 		end
@@ -89,8 +89,8 @@ do
 		return self.color
 	end
 
-	function CLASS:OnCanHear(speaker, listener)
-		if (ix.chat.classes.radio:OnCanHear(speaker, listener)) then
+	function CLASS:CanHear(speaker, listener)
+		if (ix.chat.classes.radio:CanHear(speaker, listener)) then
 			return false
 		end
 
@@ -112,7 +112,7 @@ do
 	CLASS.color = Color(175, 125, 100)
 	CLASS.format = "%s requests \"%s\""
 
-	function CLASS:OnCanHear(speaker, listener)
+	function CLASS:CanHear(speaker, listener)
 		return listener:IsCombine() or speaker:Team() == FACTION_ADMIN
 	end
 
@@ -128,8 +128,8 @@ do
 	CLASS.color = Color(175, 125, 100)
 	CLASS.format = "%s requests \"%s\""
 
-	function CLASS:OnCanHear(speaker, listener)
-		if (ix.chat.classes.request:OnCanHear(speaker, listener)) then
+	function CLASS:CanHear(speaker, listener)
+		if (ix.chat.classes.request:CanHear(speaker, listener)) then
 			return false
 		end
 
