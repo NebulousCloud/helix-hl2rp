@@ -171,21 +171,41 @@ function Schema:BuildBusinessMenu(panel)
 	return bHasItems
 end
 
-function Schema:BuildHelpMenu(tabs)
-	tabs["voices"] = function(node)
-		local body = {}
-
+function Schema:PopulateHelpMenu(tabs)
+	tabs["voices"] = function(container)
 		for k, v in SortedPairs(Schema.voices.stored) do
-			body[#body + 1] = "<h2>"..string.upper(k).."</h2>"
+			local class = container:Add("DLabel")
+			class:SetFont("ixMenuButtonFont")
+			class:SetText(string.upper(k))
+			class:Dock(TOP)
+			class:SetTextColor(ix.config.Get("color"))
+			class:SetExpensiveShadow(1, color_black)
+			class:SizeToContents()
+			class:DockMargin(0, 0, 0, 8)
 
 			for k2, v2 in SortedPairs(v) do
-				body[#body + 1] = "<div><strong>"..string.upper(k2).."</strong> <em>"..v2.text.."</em></div>"
+				local command = container:Add("DLabel")
+				command:SetFont("ixMediumFont")
+				command:SetText(string.upper(k2))
+				command:Dock(TOP)
+				command:SetTextColor(color_white)
+				command:SetExpensiveShadow(1, color_black)
+				command:SetWrap(true)
+				command:SetAutoStretchVertical(true)
+				command:SizeToContents()
+
+				local phrase = container:Add("DLabel")
+				phrase:SetFont("ixMediumLightFont")
+				phrase:SetText(v2.text)
+				phrase:Dock(TOP)
+				phrase:SetTextColor(color_white)
+				phrase:SetExpensiveShadow(1, color_black)
+				phrase:SetWrap(true)
+				phrase:SetAutoStretchVertical(true)
+				phrase:SizeToContents()
+				phrase:DockMargin(0, 0, 0, 8)
 			end
-
-			body[#body + 1] = "<br /><br />"
 		end
-
-		return table.concat(body)
 	end
 end
 
