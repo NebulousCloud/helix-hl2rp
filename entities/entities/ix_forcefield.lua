@@ -49,12 +49,12 @@ if (SERVER) then
 		local trace = util.TraceLine(data)
 
 		local angles = self:GetAngles()
-		angles:RotateAroundAxis(angles:Up(), 180)
+		angles:RotateAroundAxis(angles:Up(), 90)
 
 		self.dummy = ents.Create("prop_physics")
-		self.dummy:SetModel(self:GetModel())
+		self.dummy:SetModel("models/props_combine/combine_fence01a.mdl")
 		self.dummy:SetPos(trace.HitPos)
-		self.dummy:SetAngles(angles)
+		self.dummy:SetAngles(self:GetAngles())
 		self.dummy:Spawn()
 		self.dummy.PhysgunDisabled = true
 		self:DeleteOnRemove(self.dummy)
@@ -165,6 +165,13 @@ if (SERVER) then
 
 			if (self:GetMode() > #MODES) then
 				self:SetMode(1)
+
+				self:SetSkin(1)
+				self.dummy:SetSkin(1)
+				self:EmitSound("npc/turret_floor/die.wav")
+			else
+				self:SetSkin(0)
+				self.dummy:SetSkin(0)
 			end
 
 			self:EmitSound("buttons/combine_button5.wav", 140, 100 + (self:GetMode() - 1) * 15)
@@ -221,6 +228,10 @@ else
 
 	function ENT:Draw()
 		self:DrawModel()
+
+		if (self:GetMode() == 1) then
+			return
+		end
 
 		local angles = self:GetAngles()
 		local matrix = Matrix()
