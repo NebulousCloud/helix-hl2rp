@@ -160,7 +160,7 @@ if (SERVER) then
 			return
 		end
 
-		if (!activator:IsCombine()) then
+		if (activator:IsCombine()) then
 			self:SetMode(self:GetMode() + 1)
 
 			if (self:GetMode() > #MODES) then
