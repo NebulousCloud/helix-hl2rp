@@ -201,7 +201,9 @@ if (SERVER) then
 					return false
 				end
 
-				return MODES[entity:GetMode() or 1][1](client)
+				local mode = entity:GetMode() or 1
+
+				return istable(MODES[mode]) and MODES[mode][1](client)
 			else
 				return entity:GetMode() != 4
 			end
