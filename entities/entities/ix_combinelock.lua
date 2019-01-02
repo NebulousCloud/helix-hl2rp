@@ -96,10 +96,12 @@ if (SERVER) then
 
 		if (IsValid(self.door)) then
 			self.door:Fire("unlock")
+			self.door.ixLock = nil
 		end
 
 		if (IsValid(self.doorPartner)) then
 			self.doorPartner:Fire("unlock")
+			self.doorPartner.ixLock = nil
 		end
 
 		if (!ix.shuttingDown) then
