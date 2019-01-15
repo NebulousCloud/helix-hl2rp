@@ -66,12 +66,16 @@ do
 	function CLASS:CanHear(speaker, listener)
 		local character = listener:GetCharacter()
 		local inventory = character:GetInventory()
+		local bHasRadio = false
 
 		for k, v in pairs(inventory:GetItemsByUniqueID("handheld_radio", true)) do
-			if (v:GetData("enabled", false)) then
-				return speaker:GetCharacter():GetData("frequency") == character:GetData("frequency")
+			if (v:GetData("enabled", false) and speaker:GetCharacter():GetData("frequency") == character:GetData("frequency")) then
+				bHasRadio = true
+				break
 			end
 		end
+
+		return bHasRadio
 	end
 
 	function CLASS:OnChatAdd(speaker, text)
