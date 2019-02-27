@@ -9,7 +9,7 @@ if (CLIENT) then
 end
 
 SWEP.Category = "HL2 RP"
-SWEP.Author = "Chessix"
+SWEP.Author = "Chessnut"
 SWEP.Instructions = "Primary Fire: Stun.\nALT + Primary Fire: Toggle stun.\nSecondary Fire: Push/Knock."
 SWEP.Purpose = "Hitting things and knocking on doors."
 SWEP.Drop = false
