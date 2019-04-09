@@ -1,7 +1,7 @@
 CLASS.name = "Civil Worker's Union"
 CLASS.faction = FACTION_CITIZEN
 
-function CLASS:OnCanBe(client)
+function CLASS:CanSwitchTo(client)
 	return false
 end
 

@@ -1,7 +1,7 @@
 CLASS.name = "Metropolice Unit"
 CLASS.faction = FACTION_MPF
 
-function CLASS:OnCanBe(client)
+function CLASS:CanSwitchTo(client)
 	local name = client:Name()
 	local bStatus = false
 
