@@ -3,7 +3,7 @@ do
 	COMMAND.arguments = ix.type.text
 
 	function COMMAND:OnRun(client, message)
-		if (!client:GetNetVar("restricted")) then
+		if (!client:IsRestricted()) then
 			ix.chat.Send(client, "dispatch", message)
 		else
 			return "@notNow"
@@ -30,7 +30,7 @@ do
 		end
 
 		if (item) then
-			if (!client:GetNetVar("restricted")) then
+			if (!client:IsRestricted()) then
 				ix.chat.Send(client, "radio", message)
 				ix.chat.Send(client, "radio_eavesdrop", message)
 			else
@@ -77,7 +77,7 @@ do
 		local inventory = character:GetInventory()
 
 		if (inventory:HasItem("request_device") or client:IsCombine() or client:Team() == FACTION_ADMIN) then
-			if (!client:GetNetVar("restricted")) then
+			if (!client:IsRestricted()) then
 				Schema:AddCombineDisplayMessage("@cRequest")
 
 				ix.chat.Send(client, "request", message)
@@ -98,7 +98,7 @@ do
 	COMMAND.arguments = ix.type.text
 
 	function COMMAND:OnRun(client, message)
-		if (!client:GetNetVar("restricted")) then
+		if (!client:IsRestricted()) then
 			ix.chat.Send(client, "broadcast", message)
 		else
 			return "@notNow"
@@ -189,8 +189,8 @@ do
 			data.filter = client
 		local target = util.TraceLine(data).Entity
 
-		if (IsValid(target) and target:IsPlayer() and target:GetNetVar("restricted")) then
-			if (!client:GetNetVar("restricted")) then
+		if (IsValid(target) and target:IsPlayer() and target:IsRestricted()) then
+			if (!client:IsRestricted()) then
 				Schema:SearchPlayer(client, target)
 			else
 				return "@notNow"

@@ -31,7 +31,7 @@ function Schema:PlayerUse(client, entity)
 		return false
 	end
 
-	if (!client:GetNetVar("restricted") and entity:IsPlayer() and entity:GetNetVar("restricted") and !entity:GetNetVar("untying")) then
+	if (!client:IsRestricted() and entity:IsPlayer() and entity:IsRestricted() and !entity:GetNetVar("untying")) then
 		entity:SetAction("@beingUntied", 5)
 		entity:SetNetVar("untying", true)
 
@@ -281,7 +281,7 @@ function Schema:PlayerMessageSend(speaker, chatType, text, anonymous, receivers,
 end
 
 function Schema:CanPlayerJoinClass(client, class, info)
-	if (client:GetNetVar("restricted")) then
+	if (client:IsRestricted()) then
 		client:Notify("You cannot change classes when you are restrained!")
 
 		return false
@@ -328,7 +328,7 @@ function Schema:KeyPress(client, key)
 end
 
 function Schema:PlayerSpawnObject(client)
-	if (client:GetNetVar("restricted") or IsValid(client.ixScanner)) then
+	if (client:IsRestricted() or IsValid(client.ixScanner)) then
 		return false
 	end
 end

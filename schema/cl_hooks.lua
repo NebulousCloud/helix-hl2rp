@@ -1,6 +1,6 @@
 
 function Schema:PopulateCharacterInfo(client, character, tooltip)
-	if (client:GetNetVar("restricted")) then
+	if (client:IsRestricted()) then
 		local panel = tooltip:AddRowAfter("name", "ziptie")
 		panel:SetBackgroundColor(derma.GetColor("Warning", tooltip))
 		panel:SetText(L("tiedUp"))

@@ -14,7 +14,7 @@ ITEM.functions.Use = {
 		local target = util.TraceLine(data).Entity
 
 		if (IsValid(target) and target:IsPlayer() and target:GetCharacter()
-		and !target:GetNetVar("tying") and !target:GetNetVar("restricted")) then
+		and !target:GetNetVar("tying") and !target:IsRestricted()) then
 			itemTable.bBeingUsed = true
 
 			client:SetAction("@tying", 5)
