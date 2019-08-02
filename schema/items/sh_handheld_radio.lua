@@ -53,7 +53,7 @@ ITEM.functions.Toggle = {
 			itemTable:SetData("enabled", !itemTable:GetData("enabled", false))
 			itemTable.player:EmitSound("buttons/lever7.wav", 50, math.random(170, 180), 0.25)
 		else
-			ix.util.NotifyLocalized("radioAlreadyOn")
+			itemTable.player:NotifyLocalized("radioAlreadyOn")
 		end
 
 		return false
