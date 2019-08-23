@@ -1,7 +1,0 @@
-"sample"
-{
-	"base"		"helix"
-	"title"		"HL2 RP"
-	"author"	"nebulous.cloud"
-	"menusystem" "1"
-}
