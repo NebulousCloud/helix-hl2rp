@@ -156,6 +156,7 @@ function Schema:CreateScanner(client, class)
 
 	local uniqueID = "ix_Scanner"..client:UniqueID()
 	entity.name = uniqueID
+	entity.ixCharacterID = client:GetCharacter():GetID()
 
 	local target = ents.Create("path_track")
 	target:SetPos(entity:GetPos())
@@ -180,12 +181,13 @@ function Schema:CreateScanner(client, class)
 	client:SpectateEntity(entity)
 
 	timer.Create(uniqueID, 0.33, 0, function()
-		if (!IsValid(client) or !IsValid(entity)) then
+		if (!IsValid(client) or !IsValid(entity) or client:GetCharacter():GetID() != entity.ixCharacterID) then
 			if (IsValid(entity)) then
 				entity:Remove()
 			end
 
-			return timer.Remove(uniqueID)
+			timer.Remove(uniqueID)
+			return
 		end
 
 		local factor = 128
