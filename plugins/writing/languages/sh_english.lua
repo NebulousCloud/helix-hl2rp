@@ -1,0 +1,4 @@
+
+LANGUAGE = {
+	paper = "Paper"
+}
