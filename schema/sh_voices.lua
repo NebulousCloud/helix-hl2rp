@@ -187,7 +187,6 @@ Schema.voices.Add("Combine", "IS PASSIVE", "Is passive.", "npc/metropolice/vo/is
 Schema.voices.Add("Combine", "IS READY TO GO", "Is ready to go!", "npc/metropolice/vo/isreadytogo.wav")
 Schema.voices.Add("Combine", "ISOLATE", "Isolate!", "npc/metropolice/vo/isolate.wav")
 Schema.voices.Add("Combine", "JET", "Jet.", "npc/combine_soldier/vo/jet.wav")
-Schema.voices.Add("Combine", "JUDGE", "Judge!", "npc/combine_soldier/vo/judge.wav")
 Schema.voices.Add("Combine", "JUDGE", "Judge.", "npc/combine_soldier/vo/judge.wav")
 Schema.voices.Add("Combine", "JUDGMENT", "Suspect, prepare to receive civil judgment!", "npc/metropolice/vo/prepareforjudgement.wav")
 Schema.voices.Add("Combine", "JURISDICTION", "Stabilization-jurisdiction.", "npc/metropolice/vo/stabilizationjurisdiction.wav")
