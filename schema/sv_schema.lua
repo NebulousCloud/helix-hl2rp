@@ -154,7 +154,7 @@ function Schema:CreateScanner(client, class)
 		end
 	end)
 
-	local uniqueID = "ix_Scanner"..client:UniqueID()
+	local uniqueID = "ix_Scanner" .. client:UniqueID()
 	entity.name = uniqueID
 	entity.ixCharacterID = client:GetCharacter():GetID()
 
@@ -176,9 +176,11 @@ function Schema:CreateScanner(client, class)
 	entity:SetKeyValue("spawnflags", 8208)
 
 	client.ixScanner = entity
-	client:StripWeapons()
 	client:Spectate(OBS_MODE_CHASE)
 	client:SpectateEntity(entity)
+	entity:CallOnRemove("RemoveThink", function()
+		timer.Remove(uniqueID)
+	end)
 
 	timer.Create(uniqueID, 0.33, 0, function()
 		if (!IsValid(client) or !IsValid(entity) or client:GetCharacter():GetID() != entity.ixCharacterID) then

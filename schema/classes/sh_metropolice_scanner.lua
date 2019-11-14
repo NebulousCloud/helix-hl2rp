@@ -6,6 +6,16 @@ function CLASS:CanSwitchTo(client)
 	return Schema:IsCombineRank(client:Name(), "SCN") or Schema:IsCombineRank(client:Name(), "SHIELD")
 end
 
+function CLASS:OnSpawn(client)
+	if (IsValid(client.ixScanner) and !client.ixScanner.bPendingRemove) then
+		client.ixScanner.position = client:GetPos()
+		client.ixScanner.bPendingRemove = true
+		client.ixScanner:Remove()
+	else
+		Schema:CreateScanner(client, Schema:IsCombineRank(client:Name(), "SYNTH") and "npc_clawscanner" or nil)
+	end
+end
+
 function CLASS:OnLeave(client)
 	if (IsValid(client.ixScanner)) then
 		local data = {}

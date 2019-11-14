@@ -71,26 +71,34 @@ function Schema:PostPlayerLoadout(client)
 			client:SetMaxHealth(150)
 			client:SetHealth(150)
 			client:SetArmor(150)
-		elseif (!self:IsCombineRank(client:Name(), "RCT")) then
-			client:SetArmor(100)
+		elseif (client:IsScanner()) then
+			if (client.ixScanner:GetClass() == "npc_clawscanner") then
+				client:SetHealth(200)
+				client:SetMaxHealth(200)
+			end
+
+			client.ixScanner:SetHealth(client:Health())
+			client.ixScanner:SetMaxHealth(client:GetMaxHealth())
+			client:StripWeapons()
 		else
-			client:SetArmor(50)
+			client:SetArmor(self:IsCombineRank(client:Name(), "RCT") and 50 or 100)
 		end
 
 		local factionTable = ix.faction.Get(client:Team())
-		local character = client:GetCharacter()
 
 		if (factionTable.OnNameChanged) then
-			factionTable:OnNameChanged(client, "", character:GetName())
+			factionTable:OnNameChanged(client, "", client:GetCharacter():GetName())
 		end
 	end
 end
 
-function Schema:PlayerLoadedCharacter(client, character, oldCharacter)
+function Schema:PrePlayerLoadedCharacter(client, character, oldCharacter)
 	if (IsValid(client.ixScanner)) then
 		client.ixScanner:Remove()
 	end
+end
 
+function Schema:PlayerLoadedCharacter(client, character, oldCharacter)
 	local faction = character:GetFaction()
 
 	if (faction == FACTION_CITIZEN) then
@@ -134,7 +142,7 @@ function Schema:PlayerDeath(client, inflicter, attacker)
 		self:AddCombineDisplayMessage("@cLostBiosignal")
 		self:AddCombineDisplayMessage("@cLostBiosignalLocation", Color(255, 0, 0, 255), location)
 
-		if (IsValid(client.ixScanner)) then
+		if (IsValid(client.ixScanner) and client.ixScanner:Health() > 0) then
 			client.ixScanner:TakeDamage(999)
 		end
 
