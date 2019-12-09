@@ -12,7 +12,7 @@ function CLASS:OnSpawn(client)
 		client.ixScanner.bPendingRemove = true
 		client.ixScanner:Remove()
 	else
-		Schema:CreateScanner(client, Schema:IsCombineRank(client:Name(), "SYNTH") and "npc_clawscanner" or nil)
+		Schema:CreateScanner(client, Schema:IsCombineRank(client:Name(), "SHIELD") and "npc_clawscanner" or nil)
 	end
 end
 
