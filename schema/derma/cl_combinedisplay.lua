@@ -56,7 +56,7 @@ end
 
 function PANEL:Think()
 	local x, _ = self:GetPos()
-	local y = ix.bar.totalHeight
+	local y = (#ix.bar.list + 1) * BAR_HEIGHT
 
 	self:SetPos(x, y)
 end
