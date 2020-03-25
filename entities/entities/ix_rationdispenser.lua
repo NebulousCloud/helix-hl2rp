@@ -92,11 +92,6 @@ if (SERVER) then
 		timer.Simple(releaseDelay, function()
 			ix.item.Spawn("ration", self.dummy:GetPos(), function(item, entity)
 				self.dummy:SetNoDraw(true)
-
-				entity.ixSteamID = client:SteamID()
-				entity.ixCharID = character:GetID()
-
-				ix.log.Add(client, "ration", item:GetName(), item:GetID())
 			end, self.dummy:GetAngles())
 
 			-- display cooldown notice
