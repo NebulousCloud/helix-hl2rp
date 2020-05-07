@@ -269,8 +269,10 @@ function Schema:PlayerMessageSend(speaker, chatType, text, anonymous, receivers,
 					if (info.global) then
 						netstream.Start(nil, "PlaySound", info.sound)
 					else
-						speaker.bTypingBeep = nil
-						ix.util.EmitQueuedSounds(speaker, {info.sound, "NPC_MetroPolice.Radio.Off"}, nil, nil, volume)
+						if (speaker:IsCombine()) then
+							speaker.bTypingBeep = nil
+							ix.util.EmitQueuedSounds(speaker, {info.sound, "NPC_MetroPolice.Radio.Off"}, nil, nil, volume)
+						end
 					end
 				end
 
