@@ -380,11 +380,11 @@ end)
 
 netstream.Hook("ViewObjectivesUpdate", function(client, text)
 	if (client:GetCharacter() and hook.Run("CanPlayerEditObjectives", client)) then
-		local date = ix.date.GetSerialized()
+		local date = ix.date.Get()
 		local data = {
 			text = text:sub(1, 1000),
 			lastEditPlayer = client:GetCharacter():GetName(),
-			lastEditDate = date
+			lastEditDate = ix.date.GetSerialized(date)
 		}
 
 		ix.data.Set("combineObjectives", data, false, true)
