@@ -184,7 +184,7 @@ if (SERVER) then
 	end
 
 	hook.Add("ShouldCollide", "ix_forcefields", function(a, b)
-        local client
+        	local client
 		local entity
 		local ragdoll
 
