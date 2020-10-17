@@ -23,6 +23,8 @@ LANGUAGE = {
 	radioRequired = "You need a radio to do this.",
 	radioAlreadyOn = "You already have a radio that is turned on!",
 	economy = "Economy",
+	external = "External",
+	severe = "Severe",
 
 	-- combine display messages
 	cViewData = "Downloading citizen profile data...",
