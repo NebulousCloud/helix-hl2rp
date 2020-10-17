@@ -21,7 +21,6 @@ LANGUAGE = {
 	lastEdit = "Dernière révision par",
 	lastEditDate = "Dernière révision le",
 	objectivesTitle = "Objectifs en cours",
-	searchingCorpse = "Fouille du cadavre...",
 	radioNotOn = "Votre radio n'est pas allumée !",
 	radioRequired = "Vous avez besoin d'une radio pour faire ça.",
 	radioAlreadyOn = "Vous avez déjà une radio qui est allumée !",

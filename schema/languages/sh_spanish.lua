@@ -18,7 +18,6 @@ LANGUAGE = {
 	lastEdit = "Revisado por última vez por",
 	lastEditDate = "Revisado por última vez el",
 	objectivesTitle = "Objetivos actuales",
-	searchingCorpse = "Searching corpse...",
 	radioNotOn = "¡Tu radio no está encendida!",
 	radioRequired = "Necesitas una radio.",
 	radioAlreadyOn = "¡Ya tienes una radio encendida!",
