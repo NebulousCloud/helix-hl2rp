@@ -185,13 +185,13 @@ function Schema:PlayerHurt(client, attacker, health, damage)
 	end
 
 	if (client:IsCombine() and (client.ixTraumaCooldown or 0) < CurTime()) then
-		local text = "External"
+		local text = "external"
 
 		if (damage > 50) then
-			text = "Severe"
+			text = "severe"
 		end
 
-		client:AddCombineDisplayMessage("@cTrauma", Color(255, 0, 0, 255), text)
+		client:AddCombineDisplayMessage("@cTrauma", Color(255, 0, 0, 255), L(text, client))
 
 		if (health < 25) then
 			client:AddCombineDisplayMessage("@cDroppingVitals", Color(255, 0, 0, 255))

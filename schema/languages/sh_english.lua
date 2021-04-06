@@ -18,11 +18,12 @@ LANGUAGE = {
 	lastEdit = "Last revision by",
 	lastEditDate = "Last revised on",
 	objectivesTitle = "Current Objectives",
-	searchingCorpse = "Searching corpse...",
 	radioNotOn = "Your radio isn't on!",
 	radioRequired = "You need a radio to do this.",
 	radioAlreadyOn = "You already have a radio that is turned on!",
 	economy = "Economy",
+	external = "External",
+	severe = "Severe",
 
 	-- combine display messages
 	cViewData = "Downloading citizen profile data...",
