@@ -250,7 +250,7 @@ function Schema:OnNPCKilled(npc, attacker, inflictor)
 end
 
 function Schema:PlayerMessageSend(speaker, chatType, text, anonymous, receivers, rawText)
-	if (chatType == "ic" or chatType == "w" or chatType == "y" or chatType == "dispatch") then
+	if (chatType == "ic" or chatType == "w" or chatType == "y" or chatType == "dispatch"  or chatType == "radio") then
 		local class = self.voices.GetClass(speaker)
 
 		for k, v in ipairs(class) do
@@ -277,6 +277,17 @@ function Schema:PlayerMessageSend(speaker, chatType, text, anonymous, receivers,
 						end
 
 						ix.util.EmitQueuedSounds(speaker, sounds, nil, nil, volume)
+						
+						
+						if (chatType == "radio" and receivers) then
+							for k, v in pairs(receivers) do
+								if (receivers == speaker) then
+									continue
+								end
+
+								ix.util.EmitQueuedSounds(v, sounds, nil, nil, volume * 0.5)
+							end
+						end
 					end
 				end
 
