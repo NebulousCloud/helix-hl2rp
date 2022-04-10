@@ -22,9 +22,7 @@ function FACTION:GetDefaultName(client)
 	return "OTA-ECHO.OWS-" .. Schema:ZeroNumber(math.random(1, 99999), 5), true
 end
 
-function FACTION:OnTransferred(client)
-	local character = client:GetCharacter()
-
+function FACTION:OnTransferred(character)
 	character:SetName(self:GetDefaultName())
 	character:SetModel(self.models[1])
 end
