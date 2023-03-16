@@ -60,12 +60,12 @@ if (SERVER) then
 		self:DeleteOnRemove(self.dummy)
 
 		local verts = {
-			{pos = Vector(0, 0, -25)},
+			{pos = Vector(0, 0, -35)},
 			{pos = Vector(0, 0, 150)},
 			{pos = self:WorldToLocal(self.dummy:GetPos()) + Vector(0, 0, 150)},
 			{pos = self:WorldToLocal(self.dummy:GetPos()) + Vector(0, 0, 150)},
-			{pos = self:WorldToLocal(self.dummy:GetPos()) - Vector(0, 0, 25)},
-			{pos = Vector(0, 0, -25)}
+			{pos = self:WorldToLocal(self.dummy:GetPos()) - Vector(0, 0, 35)},
+			{pos = Vector(0, 0, -35)}
 		}
 
 		self:PhysicsFromMesh(verts)
