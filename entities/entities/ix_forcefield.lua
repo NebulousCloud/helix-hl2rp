@@ -184,31 +184,43 @@ if (SERVER) then
 	end
 
 	hook.Add("ShouldCollide", "ix_forcefields", function(a, b)
-		local client
+        	local client
 		local entity
+		local ragdoll
 
-		if (a:IsPlayer()) then
-			client = a
-			entity = b
-		elseif (b:IsPlayer()) then
-			client = b
-			entity = a
-		end
+        if (a:IsPlayer()) then
+            client = a
+            entity = b
+        elseif (b:IsPlayer()) then
+            client = b
+            entity = a
+        elseif (a:IsRagdoll()) then
+            ragdoll = a
+            entity = b
+        elseif (b:IsRagdoll()) then
+            ragdoll = b
+            entity = a
+        end
 
-		if (IsValid(entity) and entity:GetClass() == "ix_forcefield") then
-			if (IsValid(client)) then
-				if (client:IsCombine() or client:Team() == FACTION_ADMIN) then
-					return false
-				end
+        if (IsValid(entity) and entity:GetClass() == "ix_forcefield") then
+            if (IsValid(ragdoll)) then
+                if (entity:GetMode() == 1) then
+                    return false
+                end
+            end
+            if (IsValid(client)) then
+                if (client:IsCombine() or client:Team() == FACTION_ADMIN) then
+                    return false
+                end
 
-				local mode = entity:GetMode() or 1
+                local mode = entity:GetMode() or 1
 
-				return istable(MODES[mode]) and MODES[mode][1](client)
-			else
-				return entity:GetMode() != 4
-			end
-		end
-	end)
+                return istable(MODES[mode]) and MODES[mode][1](client)
+            else
+                return entity:GetMode() != 4
+            end
+        end
+    end)
 else
 	local SHIELD_MATERIAL = ix.util.GetMaterial("effects/combineshield/comshieldwall3")
 
